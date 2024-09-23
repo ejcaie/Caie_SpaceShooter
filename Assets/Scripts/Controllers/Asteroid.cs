@@ -20,12 +20,11 @@ public class Asteroid : MonoBehaviour
     void Update()
     {
         AsteroidMovement();
-        transform.position = transform.position + movePoint * moveSpeed * Time.deltaTime;
-        if (transform.position.magnitude - movePoint.magnitude > arrivalDistance) PickPoint();
     }
     public void AsteroidMovement()
     {
-        Vector3.Lerp(transform.position, movePoint, moveSpeed);
+        transform.position = transform.position + movePoint * moveSpeed * Time.deltaTime;
+        if (transform.position.magnitude - movePoint.magnitude > arrivalDistance) PickPoint();
     }
     public void PickPoint()
     {
