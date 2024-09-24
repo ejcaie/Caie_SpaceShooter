@@ -9,7 +9,7 @@ public class Stars : MonoBehaviour
     public int i = -1;
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         DrawConsellation();
         i++;
@@ -18,6 +18,7 @@ public class Stars : MonoBehaviour
     
     public void DrawConsellation()
     {
-        Debug.DrawLine(starTransforms[i].position, starTransforms[i + 1].position, Color.white, drawingTime);
+        Vector3 interpolation = Vector3.Lerp(starTransforms[i].position, starTransforms[i + 1].position, drawingTime);
+        Debug.DrawLine(starTransforms[i].position, interpolation, Color.white);
     }
 }
