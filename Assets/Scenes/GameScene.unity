@@ -2405,6 +2405,7 @@ MonoBehaviour:
   - {fileID: 426582573}
   - {fileID: 2257695664884323191}
   drawingTime: 0.5
+  i: 0
 --- !u!4 &1573207886
 Transform:
   m_ObjectHideFlags: 0
