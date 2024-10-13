@@ -47,8 +47,8 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         PlayerMovement();
-        EnemyRadar(radius, 8);
-        SpawnPowerups(radius, powerupNumber);
+        //EnemyRadar(radius, 8);
+        //SpawnPowerups(radius, powerupNumber);
     }
     public void SpawnPowerups(float radius, int numberOfPowerups)
     {
