@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using CodiceApp;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -8,6 +10,7 @@ public class Player : MonoBehaviour
     public List<float> radarPoints;
     public List<float> powerups;
     public Transform enemyTransform;
+    public SpriteRenderer playerArt;
     public GameObject bombPrefab;
     public GameObject powerupPrefab;
     public Transform bombsTransform;
@@ -16,6 +19,7 @@ public class Player : MonoBehaviour
     public float maxSpeed = 10f;
     public float acceleration = 0.0001f;
     public float radius = 3;
+    public float timer = 0.1f;
     public int powerupNumber = 2;
     public int currentPoint = 0;
     public int currentPowerup = 0;
@@ -43,10 +47,13 @@ public class Player : MonoBehaviour
             powerups.Add(powerupAngle);
             powerupAngle = powerupAngle - (360 / powerupNumber);
         }
+        timer = 11;
     }
     void FixedUpdate()
     {
         PlayerMovement();
+        HitDetection();
+        timer = timer + 1 * Time.deltaTime;
         //EnemyRadar(radius, 8);
         //SpawnPowerups(radius, powerupNumber);
     }
@@ -78,6 +85,18 @@ public class Player : MonoBehaviour
         {
             Debug.DrawLine(transform.position, endPoint, Color.green);
         }
+    }
+
+    public void HitDetection()
+    {
+        distance = enemyTransform.position - transform.position;
+        if (distance.magnitude < 1)
+        {
+            timer = 0f;
+            maxSpeed = 5;
+        }
+        playerArt.color = Color.Lerp(Color.red, Color.white, timer * 0.2f);
+        maxSpeed = Mathf.Lerp(5, 10, timer * 0.2f);
     }
 
     void PlayerMovement()
