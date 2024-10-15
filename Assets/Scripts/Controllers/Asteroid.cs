@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Asteroid : MonoBehaviour
 {
-    public float moveSpeed = 0.05f;
-    public float arrivalDistance = 0.2f;
+    public float moveSpeed = 0.5f;
+    public float arrivalDistance = 10f;
     public float maxFloatDistance = 2f;
     Vector3 movePoint = new Vector3();
 
